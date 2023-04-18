@@ -1,0 +1,3 @@
+function functionone(){
+    alert("Да");
+}
