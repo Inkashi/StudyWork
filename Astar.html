@@ -3,18 +3,28 @@
  <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
-  <title>Горизонтальный список</title>
+  <title>A*</title>
+  <script src="script.js"></script>
  </head>
  <body>
-  <header>
+  <nav>
     <div class="btn-group">
       <button type="button" class="btn sec" onclick="document.location='index.html'">Home</button>
-      <button type="button" class="btn sec">Алгоритм кластеризации</button>
-      <button type="button" class="btn sec">Генетический алгоритм</button>
-      <button type="button" class="btn sec">Муравьиный алгоритм</button>
-      <button type="button" class="btn sec">Дерево решений</button>
-      <button type="button" class="btn sec">Нейронная сеть</button>
+      <button type="button" class="btn sec" onclick="document.location='clustering.html'">Алгоритм кластеризации</button>
+      <button type="button" class="btn sec" onclick="document.location='genetic algorithm.html'">Генетический алгоритм</button>
+      <button type="button" class="btn sec" onclick="document.location='Ant algorithm.html'">Муравьиный алгоритм</button>
+      <button type="button" class="btn sec" onclick="document.location='decision tree.html'">Дерево решений</button>
+      <button type="button" class="btn sec" onclick="document.location='Neural Network.html'">Нейронная сеть</button>
     </div>
-  </header>
+  </nav>
+  <div id="text">Введите количество клеточек</div> 
+  <div id="insert">
+    <input type="number" id="tabSize">
+    <button class="btn two" onclick="adventure()">Enter</button>
+  </div>
+  <div>
+    <div id="tableCon"></div>
+    <button class="btn two" id="findpath" onclick="Findpath()">FindPath</button>
+  </div>
  </body>
 </html>
