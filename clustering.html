@@ -16,6 +16,7 @@
     border: 2px solid gray;
   }
 </style>
+
  </head>
  <body>
   <nav>
@@ -29,72 +30,8 @@
     </div>
   </nav>
   <button type ="button" id="RandPoint">Случайный центр</button>
-    <canvas id="Canvas" width="600" height="600"></canvas>
-   
-
-
-
-
-  <script>
-    var canvas = document.getElementById("Canvas");
-    var ctx = canvas.getContext("2d");
-    var button = document.getElementById("RandPoint");
-  
-    var CPoints = [];
-    var Points = [];
-
-
-    ctx.fillStyle = "#fff"; //белый цвет заливки
-    ctx.fillRect(0, 0, canvas.width, canvas.height); 
-    canvas.addEventListener("click", function(event) {
-        // Координаты клика
-        let x = event.clientX - canvas.getBoundingClientRect().left;
-        let y = event.clientY - canvas.getBoundingClientRect().top;
-        
-        // Точка
-        ctx.fillStyle = "black"; // Задаем цвет точки
-        ctx.beginPath(); // Начинаем новую фигуру
-        ctx.arc(x, y, 4, 0, Math.PI * 2, true); 
-        ctx.fill(); 
-        Points.push({x: x, y: y});
-      });
-      button.addEventListener("click", function(event) {
-        // Выбираем случайные координаты для точки
-        let x = Math.random() * canvas.width;
-        let y = Math.random() * canvas.height;
-
-        var red = Math.floor(Math.random() * 256);
-        var green = Math.floor(Math.random() * 256);
-        var blue = Math.floor(Math.random() * 256);
-
-        var color = 'rgb(' + red + ',' + green + ',' + blue + ')';
-       
-        ctx.fillStyle = color; 
-        ctx.beginPath(); 
-        ctx.arc(x, y, 7, 0, Math.PI * 2, true); 
-        ctx.fill(); 
-        CPoints.push({x: x, y: y, color: color});
-      });
-      function Klust() {
-        let min;
-        var d;
-        var mincolor;
-        for(let i = 0; i<Points.length; i++) {
-          min = 10000;
-          for(let j = 0;j<CPoints.length;j++) {
-      
-          d =  Math.sqrt(Math.pow(CPoints[j].x - Points[i].x,2) + Math.pow(CPoints[j].y - Points[i].y,2)) 
-          if(min > d) {
-            min = d;
-            mincolor = CPoints[j].color;
-          }
-        }
-        ctx.fillStyle = mincolor;
-        ctx.beginPath(); 
-        ctx.arc(Points[i].x, Points[i].y, 4, 0, Math.PI * 2, true); 
-        ctx.fill(); 
-        }
-      }
-  </script>
+  <button type ="button" id="RandPoint" onclick="KMeans()">Кластеризация</button>
+    <canvas id="Canvas" width="700" height="700"></canvas>
+    <script src="Clustscript.js"></script>
  </body>
 </html>
