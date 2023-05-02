@@ -4,6 +4,19 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
   <title>Алгоритм кластеризации</title>
+  <style>
+  .rand {
+    padding: 10px 40px 10px 40px;
+    margin: 0 auto 40px auto;
+    display: block;
+  }
+   canvas {
+    margin: auto;
+    display: block;
+    border: 2px solid gray;
+  }
+</style>
+
  </head>
  <body>
   <nav>
@@ -16,5 +29,11 @@
       <button type="button" class="btn sec" onclick="document.location='Neural Network.html'">Нейронная сеть</button>
     </div>
   </nav>
+  <div>
+    <button type ="button" class="btn sec" id="RandPoint">Случайный центр</button>
+    <button type ="button" class="btn sec" id="RandPoint" onclick="KMeans()">Кластеризация</button>
+  </div>
+    <canvas id="Canvas" width="700" height="700"></canvas>
+    <script src="Clustscript.js"></script>
  </body>
 </html>

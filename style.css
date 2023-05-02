@@ -45,8 +45,10 @@ nav{
 }
 
 .two{
+    height: 32px;
+    border-radius: 0.50rem;
     border-color: black;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     background-color: green;
 }
 input{
@@ -68,6 +70,8 @@ div{
 }
 
 #text{
+    position: relative;
+    left:-120px;
     color:white;
     font-size: 15px;
     font-style: italic;
@@ -80,17 +84,51 @@ table{
 }
 
 tr{
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
     border: 1px solid grey;
 }
 td{
+    width: 15px;
+    height: 15px;
+    border: 1px solid grey;
+}
+
+#findpath,#earse,#labirint{
+    visibility: hidden;
+}
+
+#insert{
+    color:white;
+}
+
+.preview{
     width: 25px;
     height: 25px;
     border: 1px solid grey;
 }
+.start{
+    background-color: green;
+}
 
-#findpath{
-    height:35px;
-    visibility: hidden;
+.end{
+    margin-left:11px;
+    background-color: red;
+}
+.obstace{
+    margin-left:47px;
+    background-color: grey;
+}
+
+.element{
+    width: auto;
+}
+
+.Pre{
+    display:inline-block;
+    color:white;
+    width: auto;
+    position:absolute;
+    top:420px;
+    left:0px;
 }
