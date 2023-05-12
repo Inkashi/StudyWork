@@ -108,7 +108,7 @@ const canvas = document.getElementById("Canvas");
 
         let iteration = 0;
     
-        function AntAlgoritm () {
+        function AntAlgorithm () {
   
           let Ants = 4000;
           

@@ -102,7 +102,7 @@ canvas.addEventListener("click", function(event) {
     return child;
   }
   
-  function GeneticAlghoritm() {
+  function GeneticAlghorithm() {
 
   res = 0;
 
@@ -147,13 +147,6 @@ for(let i = 1; i< populationCount; i++) {
 
         population.push(child);
         population.push(child1);
-        
-        /*
-        if (Math.random() < MutRate) {
-        let MutateChild = Mutate(child);
-        population.push(MutateChild);
-        count++;
-        }*/
 
         }
         
