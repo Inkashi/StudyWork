@@ -1,6 +1,7 @@
-var canvas = document.getElementById("Canvas");
-var ctx = canvas.getContext("2d");
-var button = document.getElementById("RandPoint");
+const canvas = document.getElementById("Canvas");
+const ctx = canvas.getContext("2d");
+
+const button = document.getElementById("RandPoint");
 
 
 let Points = [];
@@ -8,17 +9,17 @@ let CPoints = [];
 let clasters = [];
 let count = 0; 
 
-ctx.fillStyle = "#fff"; //белый цвет заливки
+ctx.fillStyle = "#fff"; 
 ctx.fillRect(0, 0, canvas.width, canvas.height); 
 
 canvas.addEventListener("click", function(event) {
-    // Координаты клика
+    
     let x = event.offsetX;
     let y = event.offsetY;
     
-    // Точка
-    ctx.fillStyle = "black"; // Задаем цвет точки
-    ctx.beginPath(); // Начинаем новую фигуру
+   
+    ctx.fillStyle = "black"; 
+    ctx.beginPath();
     ctx.arc(x, y, 4, 0, Math.PI * 2, true); 
     ctx.fill(); 
     Points.push({x: x, y: y, count: 123, color: 0});
@@ -31,7 +32,7 @@ canvas.addEventListener("click", function(event) {
     var green = Math.floor(Math.random() * 256);
     var blue = Math.floor(Math.random() * 256);
 
-    var color = 'rgb(' + red + ',' + green + ',' + blue + ')';
+    let color = 'rgb(' + red + ',' + green + ',' + blue + ')';
    
     ctx.fillStyle = color; 
     ctx.beginPath(); 

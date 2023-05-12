@@ -4,6 +4,18 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
   <title>Генетический алгоритм</title>
+  <style>
+    .rand {
+      padding: 10px 40px 10px 40px;
+      margin: auto;
+      display: block;
+    }
+     canvas {
+      margin: auto;
+      display: block;
+      border: 2px solid gray;
+    }
+  </style>
  </head>
  <body>
   <nav>
@@ -16,5 +28,8 @@
       <button type="button" class="btn sec" onclick="document.location='Neural Network.html'">Нейронная сеть</button>
     </div>
   </nav>
+  <canvas id="Canvas" width="700" height="700"></canvas>
+  <button type ="button" id="rand" onclick="GeneticAlghorithm()">Построить путь</button>
+<script src="Genetic script.js"></script>
  </body>
 </html>

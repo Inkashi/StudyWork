@@ -22,17 +22,15 @@
   <nav>
     <div class="btn-group">
       <button type="button" class="btn sec" onclick="document.location='Astar.html'">A*</button>
-      <button type="button" class="btn sec" onclick="document.location='index.html'">Home</button>
+      <button style="font-weight: 1000" type="button" class="btn sec" onclick="document.location='index.html'">Home</button>
       <button type="button" class="btn sec" onclick="document.location='genetic algorithm.html'">Генетический алгоритм</button>
       <button type="button" class="btn sec" onclick="document.location='Ant algorithm.html'">Муравьиный алгоритм</button>
       <button type="button" class="btn sec" onclick="document.location='decision tree.html'">Дерево решений</button>
       <button type="button" class="btn sec" onclick="document.location='Neural Network.html'">Нейронная сеть</button>
     </div>
   </nav>
-  <div>
-    <button type ="button" class="btn sec" id="RandPoint">Случайный центр</button>
-    <button type ="button" class="btn sec" id="RandPoint" onclick="KMeans()">Кластеризация</button>
-  </div>
+  <button type ="button" id="RandPoint">Случайный центр</button>
+  <button type ="button" id="RandPoint" onclick="KMeans()">Кластеризация</button>
     <canvas id="Canvas" width="700" height="700"></canvas>
     <script src="Clustscript.js"></script>
  </body>

@@ -4,6 +4,13 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
   <title>Муравьиный алгоритм</title>
+  <style>
+    canvas {
+    margin: auto;
+    display: block;
+    border: 3px solid gray;
+  };
+  </style>
  </head>
  <body>
   <nav>
@@ -16,5 +23,11 @@
       <button type="button" class="btn sec" onclick="document.location='Neural Network.html'">Нейронная сеть</button>
     </div>
   </nav>
+  <div>
+    <button class="FindPath" onclick="AntAlgorithm()">Найти путь</button>
+  </div>
+  <br>
+  <canvas id="Canvas" width="700" height="700"></canvas>
+  <script src="Ant.js"></script>
  </body>
 </html>
