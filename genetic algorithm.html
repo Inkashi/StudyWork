@@ -2,19 +2,25 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Style\style.css">
   <title>Генетический алгоритм</title>
  </head>
  <body>
   <nav>
     <div class="btn-group">
-      <button type="button" class="btn sec" onclick="document.location='Astar.html'">А*</button>
-      <button type="button" class="btn sec" onclick="document.location='clustering.html'">Алгоритм кластеризации</button>
-      <button type="button" class="btn sec" onclick="document.location='index.html'">Home</button>
-      <button type="button" class="btn sec" onclick="document.location='Ant algorithm.html'">Муравьиный алгоритм</button>
-      <button type="button" class="btn sec" onclick="document.location='decision tree.html'">Дерево решений</button>
-      <button type="button" class="btn sec" onclick="document.location='Neural Network.html'">Нейронная сеть</button>
+      <button type="button" class="btn frs" onclick="document.location='Astar.html'">А*</button>
+      <button type="button" class="btn frs" onclick="document.location='clustering.html'">Алгоритм кластеризации</button>
+      <button type="button" class="btn frs" onclick="document.location='index.html'">Home</button>
+      <button type="button" class="btn frs" onclick="document.location='Ant algorithm.html'">Муравьиный алгоритм</button>
+      <button type="button" class="btn frs" onclick="document.location='decision tree.html'">Дерево решений</button>
+      <button type="button" class="btn frs" onclick="document.location='Neural Network.html'">Нейронная сеть</button>
     </div>
   </nav>
+  <div>
+    <button type ="button" class = "btn two" id="rand" onclick="GeneticAlghorithm()">Построить путь</button>
+    <button type = "reset" class = "btn two" onclick="location.reload();">Стереть</button>
+  </div>
+  <canvas id="Canvas" width="700" height="700"></canvas>
+  <script src="Script's\Genetic script.js"></script>
  </body>
 </html>

@@ -2,36 +2,34 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Style\style.css">
   <title>A*</title>
-  <script src="astar.js"></script>
+  <script src="Script's\astar.js"></script>
  </head>
  <body>
   <nav>
     <div class="btn-group">
-      <button type="button" class="btn sec" onclick="document.location='index.html'">Home</button>
-      <button type="button" class="btn sec" onclick="document.location='clustering.html'">Алгоритм кластеризации</button>
-      <button type="button" class="btn sec" onclick="document.location='genetic algorithm.html'">Генетический алгоритм</button>
-      <button type="button" class="btn sec" onclick="document.location='Ant algorithm.html'">Муравьиный алгоритм</button>
-      <button type="button" class="btn sec" onclick="document.location='decision tree.html'">Дерево решений</button>
-      <button type="button" class="btn sec" onclick="document.location='Neural Network.html'">Нейронная сеть</button>
+      <button type="button" class="btn frs" onclick="document.location='index.html'">Home</button>
+      <button type="button" class="btn frs" onclick="document.location='clustering.html'">Алгоритм кластеризации</button>
+      <button type="button" class="btn frs" onclick="document.location='genetic algorithm.html'">Генетический алгоритм</button>
+      <button type="button" class="btn frs" onclick="document.location='Ant algorithm.html'">Муравьиный алгоритм</button>
+      <button type="button" class="btn frs" onclick="document.location='decision tree.html'">Дерево решений</button>
+      <button type="button" class="btn frs" onclick="document.location='Neural Network.html'">Нейронная сеть</button>
     </div>
   </nav>
   <div id="text">Введите количество клеточек</div> 
   <div id="insert">
-    <input type="number" id="tabSize" value="5">
+    <input type="number" id="tabSize" value="10">
     <button class="btn two" onclick="adventure()">Enter</button>
     <button class="btn two" id="findpath" onclick="Findpath()">FindPath</button>
-    <button class="btn two" id="earse" onclick="Earse_grid()">Earse</button>
+    <button type="reset" class="btn two" id="erase" onclick="Erase_grid()">Erase</button>
     <button class="btn two" id="labirint" onclick="labir_gen()">Labirint</button>
   </div>
   <div>
     <div id="tableCon"></div>
   </div>
-  <div class="Pre">
-    <div class="element"><span class = "preview start"></span>Старт</div>
-    <div class="element"><span class = "preview end"></span>Финиш</div>
-    <div class="element"><span class = "preview obstace"></span>Препятствие</div>
-  </div>
+  <footer id="elem">
+    <div id="element"><span class = "preview start"></span>Старт<span class = "preview end"></span>Финиш<span class = "preview obstace"></span>Препятствие</div>
+  </footer>
  </body>
 </html>
