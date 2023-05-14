@@ -3,10 +3,8 @@ let tabSize;
 
 function adventure(){
     tabSize = document.getElementById("tabSize").value;
-    let pathbutton = document.getElementById("findpath");
-    let erase = document.getElementById("erase");
     prev_green = false,prev_red = false;
-    let table = document.createElement("table");
+    var table = document.createElement("table");
     table.id = "table";
     let tableContainer = document.getElementById("tableCon");
     tableContainer.innerHTML = "";
@@ -50,6 +48,8 @@ function adventure(){
     }
     let pos = document.getElementById("insert");
     let info = document.getElementById("element");
+    let pathbutton = document.getElementById("findpath");
+    let erase = document.getElementById("erase");
     if(tabSize==0){
         erase.style.visibility = "hidden";
         info.style.visibility = "hidden";
@@ -66,7 +66,7 @@ function adventure(){
 function Findpath(){
     let startpoint;
     let endpoint;
-    let size = document.getElementById("tabSize").value;
+    let size = tabSize;
     let grid = [];
     let k=0;
     let cells = document.querySelectorAll("td");
@@ -90,73 +90,64 @@ function Findpath(){
     })
 
     let path = astar(startpoint,endpoint,grid);
-    console.log(path);
     if(path == null){
         alert("Путь не был найден");
     } else{
-        let table = document.getElementById("table");
         for(let i=1;i<path.length-1;i++){
-        table.children[path[i][1]].children[path[i][0]].style.backgroundColor = "blue";
+            table.children[path[i][1]].children[path[i][0]].style.backgroundColor = "blue";
         }
     }
 }
 
 function astar(startPoint, endPoint, grid) {
     const size = grid.length;
-    const openList = [{ x: startPoint.x, y: startPoint.y}];
+    const openList = [{ x: startPoint.x, y: startPoint.y }];
     const closedList = [];
-    const gScore =[];
+    const gScore = [];
     const fScore = [];
-    for(let i=0;i<size;i++){
-        gScore[i]=[];
-        fScore[i]=[];
-        for(let j=0;j<size;j++){
-            gScore[i][j]=Infinity;
-            fScore[i][j]=Infinity;
+    for (let i = 0; i < size; i++) {
+        gScore[i] = [];
+        fScore[i] = [];
+        for (let j = 0; j < size; j++) {
+            gScore[i][j] = 0;
+            fScore[i][j] = 0;
         }
     }
     gScore[startPoint.x][startPoint.y] = 0;
     fScore[startPoint.x][startPoint.y] = heuristic(startPoint, endPoint);
     while (openList.length > 0) {
-        let lowestFIndex = 0;
-        for (let i = 0; i < openList.length; i++) {
-            if (openList[i].f < openList[lowestFIndex].f) {
-            lowestFIndex = i;
-        }
-        }
-        const currentNode = openList[lowestFIndex];
-        if (currentNode.x === endPoint.x && currentNode.y === endPoint.y) {
-            const path = [];
-            let current = currentNode;
-            while (current.parent) {
-                path.push(current);
-                current = current.parent;
+        const currNode = openList[0];
+        if (currNode.x === endPoint.x && currNode.y === endPoint.y) {
+            let path = [];
+            let curr = currNode;
+            while (curr.parent) {
+                path.push([curr.y, curr.x]);
+                curr = curr.parent;
             }
-            path.push(current);
-            return path.map(node => [node.y, node.x]);
+            path.push([curr.y, curr.x]);
+            return path;
         }
-        openList.splice(lowestFIndex, 1);
-        closedList.push(currentNode);
-        
-        let neighbors = getNeighbors(currentNode, grid);
+        openList.splice(0, 1);
+        closedList.push(currNode);
+
+        let neighbors = getNeighbors(currNode, grid);
         for (let i = 0; i < neighbors.length; i++) {
-            const neighbor = neighbors[i];
+            let neighbor = neighbors[i];
             if (closedList.find(node => node.x === neighbor.x && node.y === neighbor.y)) {
                 continue;
             }
-            const tentativeGScore = gScore[currentNode.x][currentNode.y] + 1;
+            let tempGScore = gScore[currNode.x][currNode.y] + 1;
             if (!openList.find(node => node.x === neighbor.x && node.y === neighbor.y)) {
                 openList.push(neighbor);
-            } else if (tentativeGScore >= gScore[neighbor.x][neighbor.y]) {
+            } else if (tempGScore >= gScore[neighbor.x][neighbor.y]) {
                 continue;
             }
-            neighbor.parent = currentNode;
-            gScore[neighbor.x][neighbor.y] = tentativeGScore;
+            neighbor.parent = currNode;
+            gScore[neighbor.x][neighbor.y] = tempGScore;
             fScore[neighbor.x][neighbor.y] = heuristic(neighbor, endPoint);
-            neighbor.f = gScore[neighbor.x][neighbor.y] + fScore[neighbor.x][neighbor.y];
         }
     }
-    return null; 
+    return null;
 }
 
 function heuristic(a,b){
@@ -193,53 +184,58 @@ function Erase_grid(){
 }
 
 function labir_gen() {
-    let maze = [];
-    for(let i=0;i<tabSize;i++){
+    const maze = [];
+    for (let i = 0; i < tabSize; i++) {
         maze[i] = [];
-        for(let j=0;j<tabSize;j++){
+        for (let j = 0; j < tabSize; j++) {
             maze[i][j] = 1;
         }
     }
     maze[0][0] = 0;
     maze[tabSize - 1][tabSize - 1] = 0;
-    const vertices = [];
-    const edges = [];
+    const vertex = [], edges = [];
     for (let i = 0; i < tabSize; i++) {
         for (let j = 0; j < tabSize; j++) {
-            vertices.push({ x: j, y: i });
-            if (j > 0) {
-                edges.push({ v1: i * tabSize + j, v2: i * tabSize + j - 1, weight: Math.random() });
-            }
+            vertex.push({ x: i, y: j });
             if (i > 0) {
                 edges.push({ v1: i * tabSize + j, v2: (i - 1) * tabSize + j, weight: Math.random() });
+            } 
+            if(j > 0){
+                edges.push({ v1: i * tabSize + j, v2: i * tabSize + j - 1, weight: Math.random() })
             }
         }
     }
-    const visitedVertices = [];
-    visitedVertices.push(vertices[0]);
-    while (visitedVertices.length < vertices.length) {
+    let visitedVertex = [vertex[0]];
+    while (visitedVertex.length < vertex.length) {
         let minEdge = null;
+
         for (let i = 0; i < edges.length; i++) {
-            const { v1, v2, weight } = edges[i];
-            if (
-            (visitedVertices.includes(vertices[v1]) && !visitedVertices.includes(vertices[v2])) ||
-            (!visitedVertices.includes(vertices[v1]) && visitedVertices.includes(vertices[v2]))
-            ) {
-                if (!minEdge || weight < minEdge.weight) {
+            let temp = edges[i];
+
+            let firstVertex = visitedVertex.includes(vertex[temp.v1]);
+            let secondVertex = visitedVertex.includes(vertex[temp.v2]);
+
+            if ((firstVertex && !secondVertex) || (!firstVertex && secondVertex)) {
+                if (!minEdge || temp.weight < minEdge.weight) {
                     minEdge = edges[i];
-            }
+                }
             }
         }
-        visitedVertices.push(
-        visitedVertices.includes(vertices[minEdge.v1]) ? vertices[minEdge.v2] : vertices[minEdge.v1]);
-        const { x, y } = visitedVertices[visitedVertices.length - 1];
-        const { x: x2, y: y2 } = visitedVertices[visitedVertices.length - 2];
-        maze[Math.round((y + y2) / 2)][Math.round((x + x2) / 2)] = 0;
-        
+        if(visitedVertex.includes(vertex[minEdge.v1])){
+            visitedVertex.push(vertex[minEdge.v2]);
+        } else{
+            visitedVertex.push(vertex[minEdge.v1]);
+        }
+        let v1 = visitedVertex[visitedVertex.length - 2];
+        let v2 = visitedVertex[visitedVertex.length - 1];
+        let x = Math.round((v1.x + v2.x) / 2);
+        let y = Math.round((v1.y + v2.y) / 2);
+        maze[x][y] = 0;
+
         edges.splice(edges.indexOf(minEdge), 1);
     }
-    
-     spray(maze);
+
+    spray(maze);
 }
 
 function spray(maze){
