@@ -4,6 +4,21 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
   <title>Нейронная сеть</title>
+
+  <style>
+  table {
+    margin: auto;
+  } 
+  td {
+    padding: 20px;
+  }
+  td.black {
+    background-color: black;
+  }
+  
+  td.white {
+    background-color: white;
+  }</style>
  </head>
  <body>
   <nav>
@@ -16,5 +31,50 @@
       <button type="button" class="btn sec" onclick="document.location='index.html'">Home</button>
     </div>
   </nav>
+  <div>
+    <button onclick="CreatMatrix()">Матрица</button>
+    <button onclick="Predict()">Предсказать</button>
+    <button onclick="Uncorrect()">Неверно</button>
+    
+  </div>
+<br>
+  <table id="Table">
+    <tr>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"  ></td>
+      <td class="black"  ></td>
+      <td class="black"  ></td>
+    </tr>
+    <tr>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+    </tr>
+    <tr>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+    </tr>
+    <tr>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+    </tr>
+    <tr>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+    </tr>
+  </table>
+  <script src="Neural.js"></script>
  </body>
 </html>
