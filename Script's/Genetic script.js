@@ -30,12 +30,14 @@ window.addEventListener(`resize`, event => {
     canvas.height=400;
     canvas.width=400;
     ctx.fillStyle = "#fff"; 
-    ctx.fillRect(0, 0, canvas.width, canvas.height); 
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    Points = []; 
   } else {
     canvas.height=700;
     canvas.width=700;
     ctx.fillStyle = "#fff"; 
     ctx.fillRect(0, 0, canvas.width, canvas.height); 
+    Points = [];
   }
 }, false);
 

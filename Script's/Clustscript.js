@@ -22,11 +22,15 @@ window.addEventListener(`resize`, event => {
     canvas.width=400;
     ctx.fillStyle = "#fff"; 
     ctx.fillRect(0, 0, canvas.width, canvas.height); 
+    Points = [];
+    CPoints = [];
   } else {
     canvas.height=700;
     canvas.width=700;
     ctx.fillStyle = "#fff"; 
     ctx.fillRect(0, 0, canvas.width, canvas.height); 
+    Points = [];
+    CPoints = [];
   }
 }, false);
 
